@@ -3,7 +3,8 @@
 }
 
 body {
-  background-color: #282c34;
+  background-color: #1d4488;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,3 +17,29 @@ body {
 .App-link {
   color: #61dafb;
 }
+
+.app-header {
+  /* #34344c */
+  /* padding: 10px;
+  border: 1px tomato solid;*/
+  /* background-color: #777; */
+  padding: 0;
+  /* border-bottom: 10px solid #dac275; */
+}
+.app-header__buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.app-header__button {
+  height: 30px;
+  background-color: tomato;
+  border: none;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+/* #bfd3e5 <- sprawdz ten kolor */
