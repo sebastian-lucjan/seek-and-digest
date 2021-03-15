@@ -16,6 +16,9 @@ class App extends Component {
 
     apiUrl: "",
     inputValueByName: "",
+    mealsSearchedByName: null,
+
+    isSearchRecipeClicked: false,
   };
 
   handleSelectionClick = (type) => {
@@ -38,10 +41,12 @@ class App extends Component {
 
     const apiFullUrl = API_URL + "?query=" + this.state.inputValueByName + API_KEY;
     console.log(apiFullUrl);
+
     fetch(apiFullUrl)
       .then((response) => response.json())
-      .then((data) => console.log(data.results));
-
+      .then((data) => {
+        this.setState(() => ({ mealsSearchedByName: data.results, isSearchRecipeClicked: true }));
+      });
     // event.preventDefault();
     // this.setState(() => ({
     //   inputValueByName: this.state.inputValueByName,
@@ -52,7 +57,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <header className="app-header">
+        <section className="app-header">
           <h1 className="app-header__heading">Seek and Digest</h1>
           <nav className="app-header__nav">
             <h2 className="app-header__nav__heading-info">search for meals...</h2>
@@ -61,7 +66,7 @@ class App extends Component {
               <ButtonSearch type="ingredients" text="by ingredients..." click={this.handleClick} />
             </div>
           </nav>
-        </header>
+        </section>
         <section className="app-section-user-selection">
           {this.state.userSelection ? (
             <UserSelection
@@ -73,7 +78,13 @@ class App extends Component {
           ) : null}
           {this.state.mealListActive ? <MealList /> : null}
         </section>
-        <section className="app-section-meals"></section>
+        {this.state.isSearchRecipeClicked ? (
+          <section className="app-section-meals">
+            {this.state.mealsSearchedByName.map((meal) => (
+              <MealList key={meal.id} meal={meal} />
+            ))}
+          </section>
+        ) : null}
       </>
     );
   }
