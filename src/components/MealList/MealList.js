@@ -1,7 +1,8 @@
 // import React from 'react';
 
 const MealList = (props) => {
-  const { title, image: imageUrl, id } = props.meal;
+  const { title, image: imageUrl } = props.meal;
+  // const { title, image: imageUrl, id } = props.meal;
   console.log(props);
 
   return (

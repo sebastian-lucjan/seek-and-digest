@@ -1,4 +1,4 @@
-const ButtonSearch = (props) => {
+const Button = (props) => {
   return (
     <>
       <button onClick={() => props.click(props.type)} className="app-header__button">
@@ -8,4 +8,4 @@ const ButtonSearch = (props) => {
   );
 };
 
-export default ButtonSearch;
+export default Button;

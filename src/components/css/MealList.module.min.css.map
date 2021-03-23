@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../MealList/MealList.module.scss"
+    ],
+    "names": [],
+    "file": "MealList.module.min.css"
+}

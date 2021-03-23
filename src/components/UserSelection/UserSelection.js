@@ -1,7 +1,5 @@
 const UserSelection = (props) => {
-  // console.log(props.type);
-
-  if (props.type === "name") {
+  if (props.type === 'name') {
     return (
       <>
         <label className="userSelection">

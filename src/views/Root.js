@@ -1,28 +1,28 @@
 // import logo from "./assets/seek-and-digest.png";
-import { Component } from "react";
-import "./App.css";
-import MealList from "./MealList.js";
-import ButtonSearch from "./ButtonSearch";
-import UserSelection from "./UserSelection";
+import { Component } from 'react';
+// import './App.css';
+import MealList from '../components/MealList/MealList';
+import UserStartNav from '../components/UserStartNav/UserStartNav';
+import UserSelection from '../components/UserSelection/UserSelection';
 
-const API_URL = "https://api.spoonacular.com/recipes/complexSearch";
-const API_KEY = "&apiKey=9b9663f9860d49ecb19d6c46b4a974f2";
+const API_URL = 'https://api.spoonacular.com/recipes/complexSearch';
+const API_KEY = '&apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
 
 class App extends Component {
   state = {
     userSelection: false,
-    userSelectionType: "",
+    userSelectionType: '',
     mealListActive: false,
 
-    apiUrl: "",
-    inputValueByName: "",
+    apiUrl: '',
+    inputValueByName: '',
     mealsSearchedByName: null,
 
     isSearchRecipeClicked: false,
   };
 
   handleSelectionClick = (type) => {
-    console.log("handleSelectionClick");
+    console.log('handleSelectionClick');
 
     this.setState(() => ({
       userSelection: true,
@@ -37,9 +37,9 @@ class App extends Component {
   };
 
   handleInputSearch = () => {
-    console.log("handleInputSearch");
+    console.log('handleInputSearch');
 
-    const apiFullUrl = API_URL + "?query=" + this.state.inputValueByName + API_KEY;
+    const apiFullUrl = API_URL + '?query=' + this.state.inputValueByName + API_KEY;
     console.log(apiFullUrl);
 
     fetch(apiFullUrl)
@@ -57,16 +57,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <section className="app-header">
-          <h1 className="app-header__heading">Seek and Digest</h1>
-          <nav className="app-header__nav">
-            <h2 className="app-header__nav__heading-info">search for meals...</h2>
-            <div className="app-header__nav__buttons">
-              <ButtonSearch type="name" text="by name..." click={this.handleSelectionClick} />
-              <ButtonSearch type="ingredients" text="by ingredients..." click={this.handleClick} />
-            </div>
-          </nav>
-        </section>
+        <UserStartNav />
         <section className="app-section-user-selection">
           {this.state.userSelection ? (
             <UserSelection

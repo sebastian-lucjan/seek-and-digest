@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../UserSelection/UserSelection.module.scss"
+    ],
+    "names": [],
+    "file": "UserSelection.module.min.css"
+}
