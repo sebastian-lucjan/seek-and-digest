@@ -1,0 +1,20 @@
+@import '../../assets/styles/fonts.module';
+
+.button {
+  font-family: 'Open Sans', sans-serif;
+  height: 30px;
+  width: 120px;
+  background-color: #fe5e31;
+  border: none;
+  color: white;
+  box-shadow: -3px 3px 0px #fff;
+  cursor: pointer;
+  transition: 0.2s;
+
+  font-family: 'open sans';
+}
+
+.button:active {
+  transform: translate(-2px, 2px);
+  box-shadow: 0px 0px 0px #fff;
+}

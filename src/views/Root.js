@@ -4,11 +4,12 @@ import { Component } from 'react';
 import MealList from '../components/MealList/MealList';
 import UserStartNav from '../components/UserStartNav/UserStartNav';
 import UserSelection from '../components/UserSelection/UserSelection';
+import styles from '../views/Root.module.scss';
 
 const API_URL = 'https://api.spoonacular.com/recipes/complexSearch';
 const API_KEY = '&apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
 
-class App extends Component {
+class Root extends Component {
   state = {
     userSelection: false,
     userSelectionType: '',
@@ -56,8 +57,8 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <UserStartNav />
+      <div className={styles.container}>
+        <UserStartNav handleSelectionClick={this.handleSelectionClick} />
         <section className="app-section-user-selection">
           {this.state.userSelection ? (
             <UserSelection
@@ -76,9 +77,9 @@ class App extends Component {
             ))}
           </section>
         ) : null}
-      </>
+      </div>
     );
   }
 }
 
-export default App;
+export default Root;
