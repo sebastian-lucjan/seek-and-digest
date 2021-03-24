@@ -1,0 +1,14 @@
+@import '../../assets/styles/_variables.module.scss';
+
+.userSelection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  height: 10vh;
+  margin-top: 40px;
+
+  background-color: map-get($colors, blue-sky);
+  box-shadow: -5px 5px 0px map-get($colors, orange);
+}

@@ -1,0 +1,24 @@
+@import '../../assets/styles/_variables.module.scss';
+
+.meal {
+  display: flex;
+  width: 50vw;
+  margin-top: 40px;
+  padding: 20px;
+
+  text-align: center;
+  background-color: map-get($colors, orange);
+  color: map-get($colors, black);
+  box-shadow: -5px 5px 0px map-get($colors, red-orange);
+}
+
+.mealContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  color: map-get($colors, white);
+}

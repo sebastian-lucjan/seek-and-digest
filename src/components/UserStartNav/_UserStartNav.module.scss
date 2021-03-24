@@ -1,29 +1,30 @@
-@import '../../assets/styles/fonts.module';
+@import '../../assets/styles/_fonts.module.scss';
+@import '../../assets/styles/_variables.module.scss';
 
 .container {
   text-align: center;
-  background-color: #e8a628;
+  background-color: map-get($colors, orange);
   padding: 20px;
   width: 50vw;
-  box-shadow: -5px 5px 0px #fe5e31;
+  box-shadow: map-get($shadows, module);
   // font-family: Lobster;
 }
 
 .header {
   font-family: 'Lobster', cursive;
-  font-size: 3rem;
-  text-shadow: -3px 3px 2px #fe5e31;
+  font-size: 4rem;
+  color: map-get($colors, white);
+  text-shadow: map-get($shadows, header);
   margin: 20px;
 }
 
 .headerInfo {
-  color: #fe5e31;
-  color: #000;
   color: #fff;
   text-align: center;
   font-size: 1.6rem;
   font-weight: 300;
   font-family: 'Open Sans', sans-serif;
+  // font-family: map-get($font-family, app-text);
 }
 
 .navButtons {

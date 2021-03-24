@@ -1,5 +1,5 @@
 import Button from '../Button/Button';
-import styles from './UserStartNav.module.scss';
+import styles from './_UserStartNav.module.scss';
 
 const UserStartNav = (props) => {
   return (
@@ -9,7 +9,6 @@ const UserStartNav = (props) => {
         <h2 className={styles.headerInfo}>search for meals...</h2>
         <div className={styles.navButtons}>
           <Button type="name" text="by name..." click={props.handleSelectionClick} />
-          <Button type="ingredients" text="by ingredients..." click={props.handleSelectionClick} />
         </div>
       </nav>
     </section>

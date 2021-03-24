@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../UserStartNav/UserStartNav.module.scss"
-    ],
-    "names": [],
-    "file": "UserStartNav.module.min.css"
-}

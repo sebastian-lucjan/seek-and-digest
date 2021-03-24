@@ -1,7 +1,7 @@
 // import logo from "./assets/seek-and-digest.png";
 import { Component } from 'react';
 // import './App.css';
-import MealList from '../components/MealList/MealList';
+import MealItem from '../components/MealItem/MealItem';
 import UserStartNav from '../components/UserStartNav/UserStartNav';
 import UserSelection from '../components/UserSelection/UserSelection';
 import styles from '../views/Root.module.scss';
@@ -16,7 +16,7 @@ class Root extends Component {
     mealListActive: false,
 
     apiUrl: '',
-    inputValueByName: '',
+    inputValue: '',
     mealsSearchedByName: null,
 
     isSearchRecipeClicked: false,
@@ -31,16 +31,17 @@ class Root extends Component {
     }));
   };
 
-  handleInputValueByName = (e, inputValue) => {
+  handleInputValue = (e) => {
+    console.log(e.target.value);
     this.setState(() => ({
-      inputValueByName: e.target.value,
+      inputValue: e.target.value,
     }));
   };
 
   handleInputSearch = () => {
     console.log('handleInputSearch');
 
-    const apiFullUrl = API_URL + '?query=' + this.state.inputValueByName + API_KEY;
+    const apiFullUrl = API_URL + '?query=' + this.state.inputValue + API_KEY;
     console.log(apiFullUrl);
 
     fetch(apiFullUrl)
@@ -48,32 +49,32 @@ class Root extends Component {
       .then((data) => {
         this.setState(() => ({ mealsSearchedByName: data.results, isSearchRecipeClicked: true }));
       });
-    // event.preventDefault();
-    // this.setState(() => ({
-    //   inputValueByName: this.state.inputValueByName,
-    // }));
-    // debugger;
+  };
+
+  handleShowMealInfo = () => {
+    console.warn('handleShowMealInfo');
   };
 
   render() {
     return (
       <div className={styles.container}>
         <UserStartNav handleSelectionClick={this.handleSelectionClick} />
-        <section className="app-section-user-selection">
+        <section>
           {this.state.userSelection ? (
             <UserSelection
               type={this.state.userSelectionType}
               inputSearch={this.handleInputSearch}
-              value={this.state.inputValueByName}
-              inputChange={this.handleInputValueByName}
+              value={this.state.inputValue}
+              handleInputValue={this.handleInputValue}
             />
           ) : null}
-          {this.state.mealListActive ? <MealList /> : null}
+          {this.state.mealListActive ? <MealItem /> : null}
         </section>
+
         {this.state.isSearchRecipeClicked ? (
-          <section className="app-section-meals">
+          <section>
             {this.state.mealsSearchedByName.map((meal) => (
-              <MealList key={meal.id} meal={meal} />
+              <MealItem key={meal.id} meal={meal} handleShowMealInfo={this.handleShowMealInfo} />
             ))}
           </section>
         ) : null}

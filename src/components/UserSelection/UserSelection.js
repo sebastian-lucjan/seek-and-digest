@@ -1,18 +1,14 @@
+import Button from '../Button/Button';
+import SearchInput from '../SearchInput/SearchInput';
+import styles from './_UserSelection.module.scss';
+
 const UserSelection = (props) => {
   if (props.type === 'name') {
     return (
       <>
-        <label className="userSelection">
-          <input
-            className="userSelection__input"
-            value={props.value}
-            onChange={props.inputChange}
-            placeholder=" e.g. pizza..."
-            type="text"
-          />
-          <button onClick={props.inputSearch} className="userSelection__button">
-            Search recipe
-          </button>
+        <label className={styles.userSelection}>
+          <SearchInput handleInputValue={props.handleInputValue} />
+          <Button type="name" text="Search recipes" click={props.inputSearch} />
         </label>
       </>
     );
@@ -22,11 +18,3 @@ const UserSelection = (props) => {
 };
 
 export default UserSelection;
-
-/*<UserSelection
-              type={this.state.userSelectionType}
-              inputSearch={this.handleInputSearch}
-              value={this.inputValueByName}
-              inputChange={this.handleInputValueByName}
-            />
-            */

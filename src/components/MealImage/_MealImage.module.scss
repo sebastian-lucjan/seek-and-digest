@@ -1,0 +1,10 @@
+@import '../../assets/styles/_variables.module.scss';
+
+.mealImageContainer {
+  margin-right: 20px;
+}
+
+.mealImage {
+  width: 100px;
+  box-shadow: -5px 5px 0px map-get($colors, red-orange);
+}
