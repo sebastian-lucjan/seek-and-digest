@@ -1,0 +1,34 @@
+@import '../../assets/styles/_fonts.module.scss';
+@import '../../assets/styles/_variables.module.scss';
+
+.container {
+  text-align: center;
+  background-color: map-get($colors, orange);
+  padding: 20px;
+  width: 50vw;
+  box-shadow: map-get($shadows, module);
+  // font-family: Lobster;
+}
+
+.header {
+  font-family: 'Lobster', cursive;
+  font-size: 4rem;
+  color: map-get($colors, white);
+  text-shadow: map-get($shadows, header);
+  margin: 20px;
+}
+
+.headerInfo {
+  color: #fff;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  // font-family: map-get($font-family, app-text);
+}
+
+.navButtons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -1,0 +1,30 @@
+$colors: (
+  white: #ffffff,
+  lightGray: #dddddd,
+  grey: #c0c7d6,
+  darkGray: #737c8e,
+  black: #111111,
+  orange: #e8a628,
+  red-orange: #fe5e31,
+  blue-sky: #72b8c9,
+);
+
+$font-size: (
+  xl: '24px',
+  l: '17px',
+  m: '12px',
+  s: '11px',
+);
+
+$shadows: (
+  module: (
+    -5px 5px 0px map-get($colors, red-orange),
+  ),
+  button-blur: (
+    -3px 3px 0px map-get($colors, white),
+  ),
+  button-active: (
+    0px 0px 0px map-get($colors, white),
+  ),
+  header: -3px 3px 2px map-get($colors, red-orange),
+);

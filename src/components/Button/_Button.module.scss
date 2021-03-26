@@ -1,0 +1,19 @@
+@import '../../assets/styles/_fonts.module.scss';
+@import '../../assets/styles/_variables.module.scss';
+
+.button {
+  height: 30px;
+  width: 120px;
+  transition: 0.2s;
+  cursor: pointer;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  color: map-get($colors, white);
+  background-color: map-get($colors, red-orange);
+  box-shadow: map-get($shadows, button-blur);
+
+  &:active {
+    transform: translate(-2px, 2px);
+    box-shadow: map-get($shadows, button-active);
+  }
+}
