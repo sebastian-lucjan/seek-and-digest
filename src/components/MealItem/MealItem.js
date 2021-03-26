@@ -6,15 +6,14 @@ import MealImage from '../MealImage/MealImage';
 // import { render } from '@testing-library/react';
 
 class MealList extends Component {
-  
   state = {
     mealSourceUrl: '',
     mealUrlExist: true,
   };
 
-  componentDidUpdate() {  
-    if(this.state.mealUrlExist){
-console.log("test");
+  componentDidUpdate() {
+    if (this.state.mealUrlExist) {
+      console.log('test');
     }
     // onClick={() => this.props.handleGoToSource(this.props.id)}
   }
