@@ -7,7 +7,8 @@ import UserSelection from '../components/UserSelection/UserSelection';
 import styles from '../views/Root.module.scss';
 
 const API_URL = 'https://api.spoonacular.com/recipes/complexSearch';
-const API_KEY = '&apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
+const API_KEY = 'apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
+const API_MEAL_URL = 'https://api.spoonacular.com/recipes/';
 
 class Root extends Component {
   state = {
@@ -20,6 +21,8 @@ class Root extends Component {
     mealsSearchedByName: null,
 
     isSearchRecipeClicked: false,
+    mealSourceUrl: '',
+    // mealId: null,
   };
 
   handleSelectionClick = (type) => {
@@ -41,7 +44,7 @@ class Root extends Component {
   handleInputSearch = () => {
     console.log('handleInputSearch');
 
-    const apiFullUrl = API_URL + '?query=' + this.state.inputValue + API_KEY;
+    const apiFullUrl = API_URL + '?query=' + this.state.inputValue + '&' + API_KEY;
     console.log(apiFullUrl);
 
     fetch(apiFullUrl)
@@ -51,8 +54,17 @@ class Root extends Component {
       });
   };
 
-  handleShowMealInfo = () => {
+  handleGoToSource = (id) => {
     console.warn('handleShowMealInfo');
+    // https://api.spoonacular.com/recipes/642178/information?apiKey=9b9663f9860d49ecb19d6c46b4a974f2
+    const apiFullUrl = API_MEAL_URL + id + '/information?' + API_KEY;
+    console.log(apiFullUrl);
+
+    fetch(apiFullUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState(() => ({ mealSourceUrl: data.sourceUrl }));
+      });
   };
 
   render() {
@@ -74,7 +86,12 @@ class Root extends Component {
         {this.state.isSearchRecipeClicked ? (
           <section>
             {this.state.mealsSearchedByName.map((meal) => (
-              <MealItem key={meal.id} meal={meal} handleShowMealInfo={this.handleShowMealInfo} />
+              <MealItem
+                id={meal.id}
+                key={meal.id}
+                meal={meal}
+                handleGoToSource={this.handleGoToSource}
+              />
             ))}
           </section>
         ) : null}

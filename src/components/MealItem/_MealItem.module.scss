@@ -22,3 +22,9 @@
 
   color: map-get($colors, white);
 }
+
+.mealLink {
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+}
