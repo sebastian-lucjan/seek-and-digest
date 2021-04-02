@@ -26,8 +26,6 @@ class Root extends Component {
   };
 
   handleSelectionClick = (type) => {
-    console.log('handleSelectionClick');
-
     this.setState(() => ({
       userSelection: true,
       userSelectionType: type,
@@ -35,15 +33,12 @@ class Root extends Component {
   };
 
   handleInputValue = (e) => {
-    console.log(e.target.value);
     this.setState(() => ({
       inputValue: e.target.value,
     }));
   };
 
   handleInputSearch = () => {
-    console.log('handleInputSearch');
-
     const apiFullUrl = API_URL + '?query=' + this.state.inputValue + '&' + API_KEY;
     console.log(apiFullUrl);
 

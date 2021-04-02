@@ -11,11 +11,19 @@ class MealList extends Component {
     mealUrlExist: true,
   };
 
-  componentDidUpdate() {
-    if (this.state.mealUrlExist) {
-      console.log('test');
-    }
-    // onClick={() => this.props.handleGoToSource(this.props.id)}
+  componentDidMount() {
+    const API_KEY = 'apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
+    const API_MEAL_URL = 'https://api.spoonacular.com/recipes/';
+    const API_MEAL_ID = this.props.id;
+
+    const mealRecipeUrl = API_MEAL_URL + API_MEAL_ID + '/information?' + API_KEY;
+
+    //TODO sprawdzić czy ten adres działa czy "?" trzeba na coś zmienić
+    //BRAIN działaj więcej na insomni niż bezpośrednio w przeglądarce bo szybko wytraca się limit requestów do API
+
+    fetch(mealRecipeUrl)
+      .then((response) => response.json())
+      .then((data) => this.setState({ mealSourceUrl: data.sourceUrl }));
   }
 
   render() {

@@ -1,7 +1,6 @@
 import styles from '../SearchInput/_SearchInput.module.scss';
 
 const SearchInput = (props) => {
-  console.log(props);
   return (
     <input
       className={styles.searchInput}
