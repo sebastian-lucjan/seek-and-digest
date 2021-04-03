@@ -18,17 +18,12 @@ class MealList extends Component {
 
     const mealRecipeUrl = API_MEAL_URL + API_MEAL_ID + '/information?' + API_KEY;
 
-    //TODO sprawdzić czy ten adres działa czy "?" trzeba na coś zmienić
-    //BRAIN działaj więcej na insomni niż bezpośrednio w przeglądarce bo szybko wytraca się limit requestów do API
-
     fetch(mealRecipeUrl)
       .then((response) => response.json())
       .then((data) => this.setState({ mealSourceUrl: data.sourceUrl }));
   }
 
   render() {
-    this.props.handleGoToSource(this.props.id);
-
     const { title, image: imageUrl } = this.props.meal;
 
     return (

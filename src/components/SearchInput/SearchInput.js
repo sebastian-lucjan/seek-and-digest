@@ -4,9 +4,9 @@ const SearchInput = (props) => {
   return (
     <input
       className={styles.searchInput}
-      value={props.value}
       onChange={props.handleInputValue}
       placeholder="e.g. pizza..."
+      value={props.value}
       type="text"
     />
   );
