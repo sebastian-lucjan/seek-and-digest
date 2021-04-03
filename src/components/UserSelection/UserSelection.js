@@ -2,13 +2,13 @@ import Button from '../Button/Button';
 import SearchInput from '../SearchInput/SearchInput';
 import styles from './_UserSelection.module.scss';
 
-const UserSelection = (props) => {
-  if (props.type === 'name') {
+const UserSelection = ({ type, value, inputSearch, handleInputValue }) => {
+  if (type === 'name') {
     return (
       <>
         <label className={styles.userSelection}>
-          <SearchInput handleInputValue={props.handleInputValue} />
-          <Button type="name" text="Search recipes" click={props.inputSearch} />
+          <SearchInput handleInputValue={handleInputValue} value={value} />
+          <Button type="name" text="Search recipes" click={inputSearch} />
         </label>
       </>
     );

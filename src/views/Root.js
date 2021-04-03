@@ -8,7 +8,6 @@ import styles from '../views/Root.module.scss';
 
 const API_URL = 'https://api.spoonacular.com/recipes/complexSearch';
 const API_KEY = 'apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
-const API_MEAL_URL = 'https://api.spoonacular.com/recipes/';
 
 class Root extends Component {
   state = {
@@ -21,13 +20,9 @@ class Root extends Component {
     mealsSearchedByName: null,
 
     isSearchRecipeClicked: false,
-    mealSourceUrl: '',
-    // mealId: null,
   };
 
   handleSelectionClick = (type) => {
-    console.log('handleSelectionClick');
-
     this.setState(() => ({
       userSelection: true,
       userSelectionType: type,
@@ -35,35 +30,22 @@ class Root extends Component {
   };
 
   handleInputValue = (e) => {
-    console.log(e.target.value);
     this.setState(() => ({
       inputValue: e.target.value,
     }));
   };
 
   handleInputSearch = () => {
-    console.log('handleInputSearch');
-
     const apiFullUrl = API_URL + '?query=' + this.state.inputValue + '&' + API_KEY;
-    console.log(apiFullUrl);
-
+    console.log(this.state.inputValue);
     fetch(apiFullUrl)
       .then((response) => response.json())
       .then((data) => {
-        this.setState(() => ({ mealsSearchedByName: data.results, isSearchRecipeClicked: true }));
-      });
-  };
-
-  handleGoToSource = (id) => {
-    console.warn('handleShowMealInfo');
-    // https://api.spoonacular.com/recipes/642178/information?apiKey=9b9663f9860d49ecb19d6c46b4a974f2
-    const apiFullUrl = API_MEAL_URL + id + '/information?' + API_KEY;
-    console.log(apiFullUrl);
-
-    fetch(apiFullUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState(() => ({ mealSourceUrl: data.sourceUrl }));
+        this.setState(() => ({
+          mealsSearchedByName: data.results,
+          isSearchRecipeClicked: true,
+          inputValue: '',
+        }));
       });
   };
 
@@ -86,12 +68,7 @@ class Root extends Component {
         {this.state.isSearchRecipeClicked ? (
           <section>
             {this.state.mealsSearchedByName.map((meal) => (
-              <MealItem
-                id={meal.id}
-                key={meal.id}
-                meal={meal}
-                handleGoToSource={this.handleGoToSource}
-              />
+              <MealItem id={meal.id} key={meal.id} meal={meal} />
             ))}
           </section>
         ) : null}

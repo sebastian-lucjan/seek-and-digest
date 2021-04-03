@@ -6,22 +6,24 @@ import MealImage from '../MealImage/MealImage';
 // import { render } from '@testing-library/react';
 
 class MealList extends Component {
-  
   state = {
     mealSourceUrl: '',
     mealUrlExist: true,
   };
 
-  componentDidUpdate() {  
-    if(this.state.mealUrlExist){
-console.log("test");
-    }
-    // onClick={() => this.props.handleGoToSource(this.props.id)}
+  componentDidMount() {
+    const API_KEY = 'apiKey=9b9663f9860d49ecb19d6c46b4a974f2';
+    const API_MEAL_URL = 'https://api.spoonacular.com/recipes/';
+    const API_MEAL_ID = this.props.id;
+
+    const mealRecipeUrl = API_MEAL_URL + API_MEAL_ID + '/information?' + API_KEY;
+
+    fetch(mealRecipeUrl)
+      .then((response) => response.json())
+      .then((data) => this.setState({ mealSourceUrl: data.sourceUrl }));
   }
 
   render() {
-    this.props.handleGoToSource(this.props.id);
-
     const { title, image: imageUrl } = this.props.meal;
 
     return (
